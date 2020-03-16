@@ -1,0 +1,29 @@
+{
+    "artigos": {
+        "data": [{
+                "id": 1,
+                "nome": "Artigo 1",
+                "autor": "Fernando Maia",
+                "nota": 5,
+                "comentario": "comentario",
+                "endereco": "novo endereco"
+            },
+            {
+                "id": 2,
+                "nome": "Artigo 2",
+                "autor": "José Diôgo",
+                "nota": 2,
+                "comentario": "123124fefasdfadsf",
+                "endereco": "asdfasf"
+            },
+            {
+                "id": 3,
+                "nome": "Artigo 3",
+                "autor": "Icaro Leite",
+                "nota": 3,
+                "comentario": "qwerqwerqwr",
+                "endereco": "asdfasfqwertbbasdfwer"
+            }
+        ]
+    }
+}
