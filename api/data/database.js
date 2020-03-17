@@ -8,31 +8,19 @@ const pool = mariadb.createPool({
   connectionLimit: 5
 });
 
-async function getParticipantes() {
-  let conn;
+const getArtigo = async id => {
   try {
-    conn = await pool.getConnection();
-    const rows = await conn.query("SELECT 1 as val")[0];
-    const avaliacao = await conn.query(
-      "SELECT * from participante WHERE idParticipante = 1"
+    const conn = await pool.getConnection();
+    const artigo = await conn.query(
+      `SELECT a.numero_inscricao as id, a.nome as nome, p.nome as autor, ava.nota as nota, ava.comentario as comentario, p.telefone as contato from artigo as a INNER JOIN inscricao as i on a.FKInscricao = i.numero INNER JOIN participante as p on i.idParticipante = p.idParticipante INNER JOIN  avaliacao as ava on ava.Pkavaliacao = a.FKAvaliacao WHERE a.numero_inscricao = ${id}`
     );
-    //const rows = await conn.query("SELECT * from avaliacao");
-    console.log(avaliacao);
-    return rows;
-    /*console.log(rows); //[ {val: 1}, meta: ... ]
-      const res = await conn.query("INSERT INTO myTable value (?, ?)", [
-        1,
-        "mariadb"
-      ]);
-      console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }*/
+    return artigo[0];
   } catch (err) {
     console.log(err);
     throw err;
-  } finally {
-    if (conn) return conn.end();
   }
-}
+};
 
 module.exports = {
-  getParticipantes
+  getArtigo
 };
