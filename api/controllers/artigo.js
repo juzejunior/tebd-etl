@@ -1,8 +1,16 @@
 module.exports = app => {
   const artigosDB = app.data.artigo;
+  const database = app.data.database;
+
   const controller = {};
 
-  controller.listarArtigos = (req, res) => res.status(200).json(artigosDB);
+  controller.listarArtigos = async (req, res) => {
+    //const participantes = await database.getParticipantes();
+    // console.log(database.getParticipantes());
+    //console.log("participantes: ", participantes);
+    const participantes = await database.getParticipantes();
+    res.status(200).json(participantes);
+  };
 
   controller.listarArtigo = (req, res) => {
     const id = req.params.id;
