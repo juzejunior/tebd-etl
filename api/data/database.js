@@ -1,4 +1,4 @@
-import { pool } from "../../mariadb";
+const { pool } = require("../../mariadb");
 
 const getArtigo = async id => {
   try {
@@ -14,6 +14,15 @@ const getArtigo = async id => {
   }
 };
 
+const getArtigos = async (offset, limit) => {
+  const artigos = await pool.query(
+    `SELECT * FROM artigo WHERE numero_inscricao >= ? ORDER BY numero_inscricao ASC LIMIT ?`,
+    [offset, limit]
+  );
+  return artigos;
+};
+
 module.exports = {
-  getArtigo
+  getArtigo,
+  getArtigos
 };
