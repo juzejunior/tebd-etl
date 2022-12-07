@@ -12,11 +12,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "config": "^3.2.3",
     "consign": "^0.1.6",
     "debug": "^4.1.1",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "mariadb": "^2.2.0",
     "mongodb": "^3.5.5",
     "nodemon": "^2.0.2"
